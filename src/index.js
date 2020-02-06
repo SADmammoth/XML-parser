@@ -1,20 +1,24 @@
 let xml;
 
-(async function() {
+(async function Parse() {
   function getFile() {
     let input = document.getElementById("file-input");
-    this.resolvePromise;
+    let button = document.getElementById("file-default");
+    this.resolvePromise; //Function to trigger promise resolve
+
+    button.addEventListener("click", event => {
+      event.target.value !== ""
+        ? document.getElementById("file-info").classList.remove("hidden")
+        : document.getElementById("file-info").classList.add("hidden");
+      this.resolvePromise("./assets/index.xml");
+    });
     input.addEventListener("change", event => {
       event.target.value !== ""
         ? document.getElementById("file-info").classList.remove("hidden")
         : document.getElementById("file-info").classList.add("hidden");
-      this.resolvePromise();
+      this.resolvePromise(window.URL.createObjectURL(input.files[0]));
     });
-    return new Promise(
-      resolve =>
-        (this.resolvePromise = () =>
-          resolve(window.URL.createObjectURL(input.files[0])))
-    );
+    return new Promise(resolve => (this.resolvePromise = resolve));
   }
 
   let response = await fetch(await getFile());
@@ -54,7 +58,7 @@ let xml;
       json += "}";
       return json;
     }
-    console.log(struct(xml));
+
     console.log(JSON.parse(struct(xml)));
     document.getElementById("structure").innerText = JSON.stringify(
       JSON.parse(struct(xml)),

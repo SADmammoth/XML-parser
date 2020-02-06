@@ -2,9 +2,17 @@
   display: none;
 }
 
+.dropdown-content {
+  padding: 2em;
+}
+
 body {
   width: 1000px;
   margin: 0 auto;
+}
+
+body > div {
+  width: 100%;
 }
 
 .divided {
@@ -14,4 +22,13 @@ body {
 
 .hidden {
   display: none;
+}
+
+.filepicker {
+  display: none;
+}
+
+.filepicker-label {
+  content: "Pick file";
+  margin: 0;
 }

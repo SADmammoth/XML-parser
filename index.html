@@ -4,66 +4,157 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>XML parser</title>
+
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.css"
+      href="https://necolas.github.io/normalize.css/latest/normalize.css"
     />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
-    <input id="file-input" type="file" name="file" accept=".xml" />
-    <div id="file-info" class="hidden">
+    <div class="mx-auto w-50">
+    <h1 class="text-primary text-center w-100">XML parser</h1>
+    <h2 class="text-info text-center w-100 mb-5">Load file to start</h2 c>
+      
+    <div class="text-center">
+    <label for="file-input" class="filepicker-label btn btn-primary m-2 d-inline-block"
+      >Pick file</label
+    >
+    <input
+      class="filepicker"
+      id="file-input"
+      type="file"
+      name="file"
+      accept=".xml"
+      placeholder="Load file"
+    />
+    <span>OR</span>
+    <input
+      class="btn btn-primary m-2 d-inline-block"
+      id="file-default"
+      type="button"
+      name="file-default"
+      value="Take default"
+    />
+    
+  </div>
+  </div>
+    <div id="file-info" class="hidden m-5">
       <div class="dropdown">
-        <input
-          id="structure_dropdown"
-          class="dropdown-trigger"
-          type="checkbox"
-        />
-        <label for="structure_dropdown">JSON Structure</label>
-        <div class="dropdown-content" id="structure"></div>
-      </div>
-      <div class="dropdown">
-        <input id="diag_dropdown" class="dropdown-trigger" type="checkbox" />
-        <label for="diag_dropdown">Diagram</label>
-        <div class="dropdown-content">
-          <div id="diag" style="width: 1000px; height: 1000px;"></div>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+        <div class="custom-control custom-checkbox mb-3">
+          <input
+            id="structure_dropdown"
+            type="checkbox"
+            class="dropdown-trigger custom-control-input"
+          />
+          <label
+            for="structure_dropdown"
+            class="custom-control-label"
+            for="customCheck"
+            >JSON Structure</label
+          >
+          <div class="dropdown-content bg-light" id="structure"></div>
         </div>
       </div>
       <div class="dropdown">
-        <input id="info_dropdown" class="dropdown-trigger" type="checkbox" />
-        <label for="info_dropdown">Info</label>
-        <div id="info" class="dropdown-content"></div>
-      </div>
-      <div class="dropdown">
-        <input id="byname_dropdown" class="dropdown-trigger" type="checkbox" />
-        <label for="byname_dropdown">Find element by name</label>
-        <div id="byname" class="dropdown-content">
-          <input type="text" id="name" />
-          <br />
-          <input type="button" value="Find" id="find_byname" />
-          <div id="other_results"></div>
-          <div id="result" style="width: 1000px; height: 1000px;"></div>
+        <div class="custom-control custom-checkbox mb-3">
+          <input
+            id="diag_dropdown"
+            class="dropdown-trigger custom-control-input"
+            type="checkbox"
+          />
+          <label for="diag_dropdown" class="custom-control-label"
+            >Diagram</label
+          >
+          <div class="dropdown-content bg-light">
+            <div id="diag" style="width: 1000px; height: 1000px;"></div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+            //Here goes Joint.js diagram
+          </div>
         </div>
       </div>
       <div class="dropdown">
-        <input id="byattr_dropdown" class="dropdown-trigger" type="checkbox" />
-        <label for="byattr_dropdown">Find element by attribute value</label>
-        <div id="byattr" class="dropdown-content">
-          <input type="text" id="attr" />
-          <input type="text" id="val" />
-          <br />
-
-          <input type="button" value="Find" id="find_byattr" />
-          <div id="other_results2"></div>
-          <div id="result2" style="width: 1000px; height: 1000px;"></div>
+        <div class="custom-control custom-checkbox mb-3">
+          <input
+            id="info_dropdown"
+            class="dropdown-trigger custom-control-input"
+            type="checkbox"
+          />
+          <label for="info_dropdown" class="custom-control-label">Info</label>
+          <div id="info" class="dropdown-content  bg-light"></div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="custom-control custom-checkbox mb-3">
+          <input
+            id="byname_dropdown"
+            class="dropdown-trigger custom-control-input"
+            type="checkbox"
+          />
+          <label for="byname_dropdown" class="custom-control-label"
+            >Find element by name</label
+          >
+          <div id="byname" class="dropdown-content bg-light">
+            <div class="m-2">
+              <label for="name">Element name</label>
+              <input type="text" class="custom-control" id="name" />
+            </div class="m-2">
+            <br />
+            <input
+              type="button"
+              class="btn btn-primary m-2"
+              value="Find"
+              id="find_byname"
+            />
+            <div id="other_results"></div>
+            <div id="result" style="width: 1000px; height: 1000px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="custom-control custom-checkbox mb-3">
+          <input
+            id="byattr_dropdown"
+            class="dropdown-trigger custom-control-input"
+            type="checkbox"
+          />
+          <label for="byattr_dropdown" class="custom-control-label"
+            >Find element by attribute value</label
+          >
+          <div id="byattr" class="dropdown-content bg-light">
+            <div class="m-2">
+              <label for="attr">Attribute name</label>
+              <input type="text" class="custom-control" id="attr" />
+            </div>
+            <div class="m-2">
+              <label for="val">Attribute value</label>
+              <input type="text" class="custom-control" id="val" />
+            </div>
+            <br />
+            <input
+              type="button"
+              class="btn btn-primary m-2"
+              value="Find"
+              id="find_byattr"
+            />
+            <div id="other_results2"></div>
+            <div id="result2" style="width: 1000px; height: 1000px;"></div>
+          </div>
         </div>
       </div>
     </div>
   </body>
+
   <script src="./src/index.js"></script>
 </html>
