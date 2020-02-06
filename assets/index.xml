@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="./style.xsl" type="text/xsl"?>
+<group>
+  <item id="abcolut-botto-E7D9B6">
+    <picture alt='Abcolut'>./assets/images/Item1.png</picture>
+    <name>Abcolut</name>
+    <manufacturer>Botto Poala</manufacturer>
+    <colors>
+      <color>
+        #E7D9B6
+      </color>
+    </colors>
+    <footage>3000</footage>
+    <amount>300</amount>
+    <buydate>20.10.2017</buydate>
+    <components>
+      <component>
+        <name>Альпака</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Верблюд</name>
+        <percentage>70</percentage>
+      </component>
+    </components>
+  </item>
+  <item id="darklilli-botto-6B484CF1F1E9">
+    <picture  alt='Lilli'>./assets/images/Item2.png</picture>
+    <name>Dark Lilli</name>
+    <manufacturer>Botto Poala</manufacturer>
+    <colors>
+      <color>
+          #6B484C
+      </color>
+      <color>
+          #F1F1E9
+        </color>
+    </colors>
+    <footage>300</footage>
+    <amount>400</amount>
+    <buydate>11.10.2017</buydate>
+    <components>
+      <component>
+        <name>Шерсть</name>
+        <percentage>50</percentage>
+      </component>
+      <component>
+        <name>Вискоза</name>
+        <percentage>50</percentage>
+      </component>
+    </components>
+  </item>
+  <item id="abcolut-botto-E7D9B6">
+    <picture alt='Adelaide'>./assets/images/Item3.png</picture>
+    <name>Adelaide</name>
+    <manufacturer>Bella Yarn</manufacturer>
+    <colors>
+      <color>
+          #60080F
+        </color>
+    </colors>
+    <footage>4000</footage>
+    <amount>480</amount>
+    <buydate>22.11.2018</buydate>
+    <components>
+      <component>
+        <name>Шелк</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Ангора</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Мохер</name>
+        <percentage>40</percentage>
+      </component>
+    </components>
+  </item>
+<item id="sunflower-oxi-ffff00">
+    <picture alt='Sunflower'>./assets/images/Yarn5.jpg</picture>
+    <name>Sunflower</name>
+    <manufacturer>Oxi</manufacturer>
+    <colors>
+      <color>
+          #ffff00
+        </color>
+    </colors>
+    <footage>4000</footage>
+    <amount>480</amount>
+    <buydate>22.11.2018</buydate>
+    <components>
+      <component>
+        <name>Шелк</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Ангора</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Мохер</name>
+        <percentage>40</percentage>
+      </component>
+    </components>
+  </item>
+<item id="chimera-oxi-ff00ff">
+    <picture alt='Chimera'>./assets/images/Yarn4.jpg</picture>
+    <name>Chimera</name>
+    <manufacturer>Oxi</manufacturer>
+    <colors>
+      <color>
+          #ff00ff
+        </color>
+    </colors>
+    <footage>4000</footage>
+    <amount>480</amount>
+    <buydate>22.11.2018</buydate>
+    <components>
+      <component>
+        <name>Шелк</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Мохер</name>
+        <percentage>40</percentage>
+      </component>
+    </components>
+  </item>
+<item id="orioj-botto-c4c4c4">
+    <picture alt='Orioj'>./assets/images/Yarn3.jpg</picture>
+    <name>Orioj</name>
+    <manufacturer>Botto</manufacturer>
+    <colors>
+      <color>
+          #c4c4c4
+        </color>
+    </colors>
+    <footage>4000</footage>
+    <amount>480</amount>
+    <buydate>22.11.2018</buydate>
+    <components>
+      <component>
+        <name>Верблюд</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Мохер</name>
+        <percentage>40</percentage>
+      </component>
+    </components>
+  </item>
+<item id="cuoro-bella-0000ff">
+    <picture alt='Couro'>./assets/images/Yarn2.jpg</picture>
+    <name>Couro</name>
+    <manufacturer>Bella Yarn</manufacturer>
+    <colors>
+      <color>
+          #00c4c4
+        </color>
+    </colors>
+    <footage>4000</footage>
+    <amount>480</amount>
+    <buydate>22.11.2018</buydate>
+    <components>
+      <component>
+        <name>Шелк</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Ангора</name>
+        <percentage>30</percentage>
+      </component>
+      <component>
+        <name>Мохер</name>
+        <percentage>40</percentage>
+      </component>
+    </components>
+  </item>
+<item id="minsi-botto-ff0000">
+    <picture alt='Minsi'>./assets/images/Yarn1.jpg</picture>
+    <name>Minsi</name>
+    <manufacturer>Bella Yarn</manufacturer>
+    <colors>
+      <color>
+          #ffc4c4
+        </color>
+    </colors>
+    <footage>4000</footage>
+    <amount>480</amount>
+    <buydate>22.11.2018</buydate>
+    <components>
+      <component>
+        <name>Ангора</name>
+        <percentage>30</percentage>
+      </component>
+    </components>
+  </item>
+</group>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XML parser</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+  <body>
+    <div class="dropdown">
+      <input id="structure_dropdown" class="dropdown-trigger" type="checkbox" />
+      <label for="structure_dropdown">JSON Structure</label>
+      <div class="dropdown-content" id="structure"></div>
+    </div>
+    <div class="dropdown">
+      <input id="diag_dropdown" class="dropdown-trigger" type="checkbox" />
+      <label for="diag_dropdown">Diagram</label>
+      <div class="dropdown-content">
+        <div id="diag" style="width: 1000px; height: 1000px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+      </div>
+    </div>
+    <div class="dropdown">
+      <input id="info_dropdown" class="dropdown-trigger" type="checkbox" />
+      <label for="info_dropdown">Info</label>
+      <div id="info" class="dropdown-content"></div>
+    </div>
+    <div class="dropdown">
+      <input id="byname_dropdown" class="dropdown-trigger" type="checkbox" />
+      <label for="byname_dropdown">Find element by name</label>
+      <div id="byname" class="dropdown-content">
+        <input type="text" id="name" />
+        <br />
+        <input type="button" value="Find" id="find_byname" />
+        <div id="other_results"></div>
+        <div id="result" style="width: 1000px; height: 1000px;"></div>
+      </div>
+    </div>
+    <div class="dropdown">
+      <input id="byattr_dropdown" class="dropdown-trigger" type="checkbox" />
+      <label for="byattr_dropdown">Find element by attribute value</label>
+      <div id="byattr" class="dropdown-content">
+        <input type="text" id="attr" />
+        <input type="text" id="val" />
+        <br />
+
+        <input type="button" value="Find" id="find_byattr" />
+        <div id="other_results2"></div>
+        <div id="result2" style="width: 1000px; height: 1000px;"></div>
+      </div>
+    </div>
+  </body>
+  <script src="./src/index.js"></script>
+</html>
