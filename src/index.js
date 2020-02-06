@@ -1,7 +1,23 @@
 let xml;
 
 (async function() {
-  let response = await fetch("./assets/index.xml");
+  function getFile() {
+    let input = document.getElementById("file-input");
+    this.resolvePromise;
+    input.addEventListener("change", event => {
+      event.target.value !== ""
+        ? document.getElementById("file-info").classList.remove("hidden")
+        : document.getElementById("file-info").classList.add("hidden");
+      this.resolvePromise();
+    });
+    return new Promise(
+      resolve =>
+        (this.resolvePromise = () =>
+          resolve(window.URL.createObjectURL(input.files[0])))
+    );
+  }
+
+  let response = await fetch(await getFile());
   let text = await response.text();
   let parser = new DOMParser();
   xml = parser.parseFromString(text, "text/xml");
@@ -23,7 +39,13 @@ let xml;
           json += "}";
         } else {
           json +=
-            '"' + root.nodeName + '"' + ": " + '"' + root.innerHTML.replace(/\n|[ ]+/gm, " ") + '"';
+            '"' +
+            root.nodeName +
+            '"' +
+            ": " +
+            '"' +
+            root.innerHTML.replace(/\n|[ ]+/gm, " ") +
+            '"';
         }
         json += ", ";
       }
@@ -34,7 +56,11 @@ let xml;
     }
     console.log(struct(xml));
     console.log(JSON.parse(struct(xml)));
-    document.getElementById("structure").innerText = JSON.stringify(JSON.parse(struct(xml)));
+    document.getElementById("structure").innerText = JSON.stringify(
+      JSON.parse(struct(xml)),
+      null,
+      "\t"
+    );
   })();
 
   (function info() {
@@ -50,7 +76,9 @@ let xml;
       return count;
     }
     let cnt = count(xml, (root, count) => count + root.children.length);
-    let attrs = count(xml, (root, count) => (root.attributes ? count + root.attributes.length : 0));
+    let attrs = count(xml, (root, count) =>
+      root.attributes ? count + root.attributes.length : 0
+    );
     let max = count(xml, (root, count) =>
       count < root.children.length ? root.children.length : count
     );
@@ -76,14 +104,21 @@ let xml;
     }
 
     document.getElementById("find_byname").addEventListener("click", e => {
-      let elem = search(xml, root => root.nodeName === document.getElementById("name").value);
+      let elem = search(
+        xml,
+        root => root.nodeName === document.getElementById("name").value
+      );
       if (elem) {
-        document.getElementById("other_results2").innerHTML += `Found ${elem.length} elements`;
+        document.getElementById(
+          "other_results2"
+        ).innerHTML += `Found ${elem.length} elements`;
         elem.forEach((elem, i) => {
           diagram(elem, "result");
 
-          document.getElementById("other_results").innerHTML += "<div class='divided'></div>";
-          document.getElementById("other_results").children[i].innerText += elem.outerHTML;
+          document.getElementById("other_results").innerHTML +=
+            "<div class='divided'></div>";
+          document.getElementById("other_results").children[i].innerText +=
+            elem.outerHTML;
         });
       }
     });
@@ -96,12 +131,16 @@ let xml;
           : false
       );
       if (elem) {
-        document.getElementById("other_results2").innerHTML += `Found ${elem.length} elements`;
+        document.getElementById(
+          "other_results2"
+        ).innerHTML += `Found ${elem.length} elements`;
         elem.forEach((elem, i) => {
           diagram(elem, "result2");
 
-          document.getElementById("other_results2").innerHTML += "<div class='divided'></div>";
-          document.getElementById("other_results2").children[i].innerText += elem.outerHTML;
+          document.getElementById("other_results2").innerHTML +=
+            "<div class='divided'></div>";
+          document.getElementById("other_results2").children[i].innerText +=
+            elem.outerHTML;
         });
       }
     });
@@ -135,7 +174,9 @@ let xml;
     rect.addTo(graph);
     function draw(root, xml, prev_offset) {
       let curr = root.clone();
-      let offset = xml.parentNode ? (xml.parentNode.children.length * (100 + 10)) / 2 : 0;
+      let offset = xml.parentNode
+        ? (xml.parentNode.children.length * (100 + 10)) / 2
+        : 0;
       if (offset < prev_offset) {
         offset = prev_offset;
       }
@@ -146,7 +187,10 @@ let xml;
       if (xml.children.length === 0) {
         curr = curr.clone();
         curr.attributes.attrs.body.fill = "#ffffff";
-        curr.position(root.attributes.position.x, root.attributes.position.y + 100);
+        curr.position(
+          root.attributes.position.x,
+          root.attributes.position.y + 100
+        );
         curr.attr("label/text", "text node");
         curr.addTo(graph);
         var link = new joint.shapes.standard.Link();
@@ -176,5 +220,7 @@ let xml;
     draw(rect, xml, 0, 0);
   }
   diagram(xml, "diag");
-  document.getElementById("diag").getElementsByTagName("svg")[0].style.overflow = "scroll";
+  document
+    .getElementById("diag")
+    .getElementsByTagName("svg")[0].style.overflow = "scroll";
 })();
